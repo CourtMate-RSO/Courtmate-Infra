@@ -1,0 +1,277 @@
+{
+  "aadProfile": null,
+  "addonProfiles": {
+    "azureKeyvaultSecretsProvider": {
+      "config": null,
+      "enabled": false,
+      "identity": null
+    },
+    "azurepolicy": {
+      "config": null,
+      "enabled": false,
+      "identity": null
+    }
+  },
+  "agentPoolProfiles": [
+    {
+      "availabilityZones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "capacityReservationGroupId": null,
+      "count": 2,
+      "creationData": null,
+      "currentOrchestratorVersion": "1.32.7",
+      "eTag": null,
+      "enableAutoScaling": true,
+      "enableEncryptionAtHost": null,
+      "enableFips": false,
+      "enableNodePublicIp": false,
+      "enableUltraSsd": null,
+      "gatewayProfile": null,
+      "gpuInstanceProfile": null,
+      "gpuProfile": null,
+      "hostGroupId": null,
+      "kubeletConfig": null,
+      "kubeletDiskType": "OS",
+      "linuxOsConfig": null,
+      "maxCount": 5,
+      "maxPods": 110,
+      "messageOfTheDay": null,
+      "minCount": 2,
+      "mode": "System",
+      "name": "agentpool",
+      "networkProfile": null,
+      "nodeImageVersion": "AKSUbuntu-2204containerd-202510.03.0",
+      "nodeLabels": null,
+      "nodePublicIpPrefixId": null,
+      "nodeTaints": null,
+      "orchestratorVersion": "1.32.7",
+      "osDiskSizeGb": 128,
+      "osDiskType": "Managed",
+      "osSku": "Ubuntu",
+      "osType": "Linux",
+      "podIpAllocationMode": null,
+      "podSubnetId": null,
+      "powerState": {
+        "code": "Stopped"
+      },
+      "provisioningState": "Succeeded",
+      "proximityPlacementGroupId": null,
+      "scaleDownMode": "Delete",
+      "scaleSetEvictionPolicy": null,
+      "scaleSetPriority": null,
+      "securityProfile": {
+        "enableSecureBoot": false,
+        "enableVtpm": false,
+        "sshAccess": "LocalUser"
+      },
+      "spotMaxPrice": null,
+      "status": null,
+      "tags": null,
+      "type": "VirtualMachineScaleSets",
+      "upgradeSettings": {
+        "drainTimeoutInMinutes": null,
+        "maxSurge": "10%",
+        "maxUnavailable": "0",
+        "nodeSoakDurationInMinutes": null,
+        "undrainableNodeBehavior": null
+      },
+      "virtualMachineNodesStatus": null,
+      "virtualMachinesProfile": null,
+      "vmSize": "Standard_A2_v2",
+      "windowsProfile": null,
+      "workloadRuntime": null
+    }
+  ],
+  "aiToolchainOperatorProfile": null,
+  "apiServerAccessProfile": {
+    "authorizedIpRanges": null,
+    "disableRunCommand": null,
+    "enablePrivateCluster": false,
+    "enablePrivateClusterPublicFqdn": null,
+    "enableVnetIntegration": null,
+    "privateDnsZone": null,
+    "subnetId": null
+  },
+  "autoScalerProfile": {
+    "balanceSimilarNodeGroups": "false",
+    "daemonsetEvictionForEmptyNodes": false,
+    "daemonsetEvictionForOccupiedNodes": true,
+    "expander": "random",
+    "ignoreDaemonsetsUtilization": false,
+    "maxEmptyBulkDelete": "10",
+    "maxGracefulTerminationSec": "600",
+    "maxNodeProvisionTime": "15m",
+    "maxTotalUnreadyPercentage": "45",
+    "newPodScaleUpDelay": "0s",
+    "okTotalUnreadyCount": "3",
+    "scaleDownDelayAfterAdd": "10m",
+    "scaleDownDelayAfterDelete": "10s",
+    "scaleDownDelayAfterFailure": "3m",
+    "scaleDownUnneededTime": "10m",
+    "scaleDownUnreadyTime": "20m",
+    "scaleDownUtilizationThreshold": "0.5",
+    "scanInterval": "10s",
+    "skipNodesWithLocalStorage": "false",
+    "skipNodesWithSystemPods": "true"
+  },
+  "autoUpgradeProfile": {
+    "nodeOsUpgradeChannel": "NodeImage",
+    "upgradeChannel": "patch"
+  },
+  "azureMonitorProfile": null,
+  "azurePortalFqdn": "testcluster-dns-3sgin9cw.portal.hcp.polandcentral.azmk8s.io",
+  "bootstrapProfile": {
+    "artifactSource": "Direct",
+    "containerRegistryId": null
+  },
+  "currentKubernetesVersion": "1.32.7",
+  "disableLocalAccounts": false,
+  "diskEncryptionSetId": null,
+  "dnsPrefix": "testCluster-dns",
+  "eTag": null,
+  "enableRbac": true,
+  "extendedLocation": null,
+  "fqdn": "testcluster-dns-3sgin9cw.hcp.polandcentral.azmk8s.io",
+  "fqdnSubdomain": null,
+  "httpProxyConfig": null,
+  "id": "/subscriptions/5e721155-0ac0-468c-b51d-0389784fbef9/resourcegroups/RSO/providers/Microsoft.ContainerService/managedClusters/testCluster",
+  "identity": {
+    "delegatedResources": null,
+    "principalId": "652a8532-2c60-4ada-9254-46014122f78e",
+    "tenantId": "a6cc90df-f580-49dc-903f-87af5a75338e",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "0edb9c44-7c4f-4b01-a8ee-fe1f4441fd37",
+      "objectId": "6ede8c12-2bae-4c49-96c3-0dccb602dad0",
+      "resourceId": "/subscriptions/5e721155-0ac0-468c-b51d-0389784fbef9/resourcegroups/MC_RSO_testCluster_austriaeast/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testCluster-agentpool"
+    }
+  },
+  "ingressProfile": null,
+  "kind": "Base",
+  "kubernetesVersion": "1.32.7",
+  "linuxProfile": null,
+  "location": "polandcentral",
+  "maxAgentPools": 100,
+  "metricsProfile": {
+    "costAnalysis": {
+      "enabled": false
+    }
+  },
+  "name": "testCluster",
+  "networkProfile": {
+    "advancedNetworking": null,
+    "dnsServiceIp": "10.0.0.10",
+    "ipFamilies": [
+      "IPv4"
+    ],
+    "loadBalancerProfile": {
+      "allocatedOutboundPorts": null,
+      "backendPoolType": "nodeIPConfiguration",
+      "effectiveOutboundIPs": [
+        {
+          "id": "/subscriptions/5e721155-0ac0-468c-b51d-0389784fbef9/resourceGroups/MC_RSO_testCluster_austriaeast/providers/Microsoft.Network/publicIPAddresses/73a80289-32b2-4625-a678-e63babe5c767",
+          "resourceGroup": "MC_RSO_testCluster_austriaeast"
+        }
+      ],
+      "enableMultipleStandardLoadBalancers": null,
+      "idleTimeoutInMinutes": null,
+      "managedOutboundIPs": {
+        "count": 1,
+        "countIpv6": null
+      },
+      "outboundIPs": null,
+      "outboundIpPrefixes": null
+    },
+    "loadBalancerSku": "Standard",
+    "natGatewayProfile": null,
+    "networkDataplane": "azure",
+    "networkMode": null,
+    "networkPlugin": "azure",
+    "networkPluginMode": "overlay",
+    "networkPolicy": "none",
+    "outboundType": "loadBalancer",
+    "podCidr": "10.244.0.0/16",
+    "podCidrs": [
+      "10.244.0.0/16"
+    ],
+    "serviceCidr": "10.0.0.0/16",
+    "serviceCidrs": [
+      "10.0.0.0/16"
+    ],
+    "staticEgressGatewayProfile": null
+  },
+  "nodeProvisioningProfile": {
+    "defaultNodePools": "Auto",
+    "mode": "Manual"
+  },
+  "nodeResourceGroup": "MC_RSO_testCluster_austriaeast",
+  "nodeResourceGroupProfile": null,
+  "oidcIssuerProfile": {
+    "enabled": true,
+    "issuerUrl": "https://polandcentral.oic.prod-aks.azure.com/a6cc90df-f580-49dc-903f-87af5a75338e/2d3401ee-7756-45ef-a988-b4c7fca47661/"
+  },
+  "podIdentityProfile": null,
+  "powerState": {
+    "code": "Stopped"
+  },
+  "privateFqdn": null,
+  "privateLinkResources": null,
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": null,
+  "resourceGroup": "RSO",
+  "resourceUid": "68fb3824c94498000163b5c2",
+  "securityProfile": {
+    "azureKeyVaultKms": null,
+    "customCaTrustCertificates": null,
+    "defender": null,
+    "imageCleaner": {
+      "enabled": true,
+      "intervalHours": 168
+    },
+    "workloadIdentity": {
+      "enabled": true
+    }
+  },
+  "serviceMeshProfile": null,
+  "servicePrincipalProfile": {
+    "clientId": "msi"
+  },
+  "sku": {
+    "name": "Base",
+    "tier": "Free"
+  },
+  "status": null,
+  "storageProfile": {
+    "blobCsiDriver": null,
+    "diskCsiDriver": {
+      "enabled": true
+    },
+    "fileCsiDriver": {
+      "enabled": true
+    },
+    "snapshotController": {
+      "enabled": true
+    }
+  },
+  "supportPlan": "KubernetesOfficial",
+  "systemData": null,
+  "type": "Microsoft.ContainerService/ManagedClusters",
+  "upgradeSettings": null,
+  "windowsProfile": {
+    "adminPassword": null,
+    "adminUsername": "azureuser",
+    "enableCsiProxy": true,
+    "gmsaProfile": null,
+    "licenseType": null
+  },
+  "workloadAutoScalerProfile": {
+    "keda": null,
+    "verticalPodAutoscaler": null
+  }
+}

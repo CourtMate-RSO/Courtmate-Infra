@@ -1,0 +1,13 @@
+# Sensitive kubeconfig files
+*kubeconfig*.yaml
+*.kubeconfig
+.kube/
+
+# secretes files
+k8s/secrets/*-secrets.yaml
+*-secrets.yaml
+
+# Secrets
+*secret*.yaml
+*-secrets.yaml
+credentials/
