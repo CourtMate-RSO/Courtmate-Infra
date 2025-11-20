@@ -1,0 +1,59 @@
+# ==========================
+# UI SERVICE (FRONTEND)
+# ==========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courtmate-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courtmate-ui
+  template:
+    metadata:
+      labels:
+        app: courtmate-ui
+    spec:
+      containers:
+        - name: courtmate-ui
+          image: k3d-registry.localhost:5000/courtmate-ui:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          env:
+            # Internal Cluster URL for Server-Side calls (Next.js Server -> Python Backend)
+            - name: USER_SERVICE_URL
+              value: "http://user-service"
+            
+            # Public URL for Browser Redirects (NextAuth)
+            - name: NEXTAUTH_URL
+              value: "http://localhost:30000"
+            
+            - name: AUTH_TRUST_HOST
+              value: "true"
+            
+            - name: AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: AUTH_SECRET
+            
+            - name: AUTH_GOOGLE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: AUTH_GOOGLE_ID
+            
+            - name: AUTH_GOOGLE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: AUTH_GOOGLE_SECRET
