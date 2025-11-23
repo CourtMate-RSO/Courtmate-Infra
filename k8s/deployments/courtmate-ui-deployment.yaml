@@ -33,6 +33,9 @@ spec:
             - name: USER_SERVICE_URL
               value: "http://user-service"
             
+            - name: FACILITIES_SERVICE_URL
+              value: "http://court-service"
+            
             # Public URL for Browser Redirects (NextAuth)
             - name: NEXTAUTH_URL
               value: "http://localhost:30000"
@@ -57,3 +60,9 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: AUTH_GOOGLE_SECRET
+
+            - name: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY

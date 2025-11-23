@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: court-service
-          image: k3d-registry.localhost:5000/court-service:v1
+          image: REGISTRY_PLACEHOLDER/court-service:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

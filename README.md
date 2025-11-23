@@ -93,6 +93,10 @@ kubectl create secret generic app-secrets \
     cd ../Courtmate-User-Service
     docker build -t localhost:5000/user-service:v1 .
     docker push localhost:5000/user-service:v1
+
+    cd ../Courtmate-Court-Service
+    docker build -t localhost:5000/court-service:v1 .
+    docker push localhost:5000/court-service:v1
     ```
 
 4.  **Deploy:**
