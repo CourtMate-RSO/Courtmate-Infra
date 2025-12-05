@@ -36,6 +36,9 @@ spec:
             - name: FACILITIES_SERVICE_URL
               value: "http://court-service"
             
+            - name: BOOKING_SERVICE_URL
+              value: "http://booking-service"
+            
             # Public URL for Browser Redirects (NextAuth)
             - name: NEXTAUTH_URL
               value: "http://localhost:30000"
