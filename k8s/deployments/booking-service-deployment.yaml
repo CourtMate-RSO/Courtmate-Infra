@@ -21,7 +21,7 @@ spec:
           image: k3d-registry.localhost:5000/booking-service:v1
           imagePullPolicy: Always
           ports:
-            - containerPort: 8000
+            - containerPort: 8002
           resources:
             requests:
               memory: "128Mi"
