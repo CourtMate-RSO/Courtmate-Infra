@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: courtmate-ui
-          image: k3d-registry.localhost:5000/courtmate-ui:v1
+          image: courtmateacr.azurecr.io/courtmate-ui:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -31,17 +31,17 @@ spec:
           env:
             # Internal Cluster URL for Server-Side calls (Next.js Server -> Python Backend)
             - name: USER_SERVICE_URL
-              value: "http://user-service"
+              value: "http://74.248.1.160/api/users"
             
             - name: FACILITIES_SERVICE_URL
-              value: "http://court-service"
+              value: "http://74.248.1.160/api/courts"
             
             - name: BOOKING_SERVICE_URL
-              value: "http://booking-service"
+              value: "http://74.248.1.160/api/bookings"
             
             # Public URL for Browser Redirects (NextAuth)
             - name: NEXTAUTH_URL
-              value: "http://localhost:30000"
+              value: "http://74.248.1.160"
             
             - name: AUTH_TRUST_HOST
               value: "true"
