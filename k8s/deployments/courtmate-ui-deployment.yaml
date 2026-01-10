@@ -5,6 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: courtmate-ui
+  namespace: myapp
 spec:
   replicas: 1
   selector:
@@ -23,25 +24,25 @@ spec:
             - containerPort: 3000
           resources:
             requests:
-              memory: "128Mi"
+              memory: "256Mi"
               cpu: "250m"
             limits:
-              memory: "256Mi"
-              cpu: "500m"
+              memory: "512Mi"
+              cpu: "1000m"
           env:
             # Internal Cluster URL for Server-Side calls (Next.js Server -> Python Backend)
             - name: USER_SERVICE_URL
-              value: "http://74.248.1.160/api/users"
+              value: "http://user-service"
             
             - name: FACILITIES_SERVICE_URL
-              value: "http://74.248.1.160/api/courts"
+              value: "http://court-service"
             
             - name: BOOKING_SERVICE_URL
-              value: "http://74.248.1.160/api/bookings"
+              value: "http://booking-service"
             
             # Public URL for Browser Redirects (NextAuth)
             - name: NEXTAUTH_URL
-              value: "http://74.248.1.160"
+              value: "https://courtmate.duckdns.org"
             
             - name: AUTH_TRUST_HOST
               value: "true"
