@@ -1,37 +1,50 @@
-# Courtmate Kubernetes Infrastructure
+# CourtMate Kubernetes Infrastructure
+
+## Current Production Setup
+
+### Azure AKS Cluster
+- **Cluster Name**: CourtMateRSO
+- **Resource Group**: CourtMate
+- **Location**: polandcentral
+- **Kubernetes Version**: 1.33.5
+- **Node Count**: 2 (auto-scaling enabled)
+
+### Container Registry
+- **ACR Name**: courtmate603fc8acr.azurecr.io
+- **SKU**: Basic
+- **Integrated with AKS**: Yes (AcrPull role assigned)
+
+### Domain Configuration
+- **Primary Domain**: https://courtmate.duckdns.org
+- **Grafana**: https://grafana.courtmate.duckdns.org
+- **Prometheus**: https://prometheus.courtmate.duckdns.org
+- **SSL/TLS**: Let's Encrypt (via cert-manager)
+- **Ingress Controller**: NGINX
+- **LoadBalancer IP**: 134.112.145.160
 
 ## Requirements
 
-### Local Development (k3d)
-- **Docker Desktop** (or Docker Engine) - Running and healthy
-- **kubectl** - Kubernetes command-line tool
-  ```bash
-  brew install kubectl
-  ```
-- **k3d** - Lightweight Kubernetes distribution
-  ```bash
-  brew install k3d
-  ```
-- **Node.js 20+** and **pnpm** - For building UI
-  ```bash
-  brew install node
-  corepack enable
-  ```
-
-### Azure Production (AKS)
+### Tools
 - **Azure CLI** - For managing Azure resources
   ```bash
   brew install azure-cli
   ```
-- **kubectl** - Same as local development
+- **kubectl** - Kubernetes command-line tool
+  ```bash
+  brew install kubectl
+  ```
+- **Helm** - Package manager for Kubernetes
+  ```bash
+  brew install helm
+  ```
+- **Docker** - For building container images
+  ```bash
+  brew install docker
+  ```
 
-## Azure AKS Cluster Details
-- **Name**: testCluster
-- **Resource Group**: RSO
-- **Location**: polandcentral
-- **Kubernetes Version**: 1.32.7
+## Quick Start
 
-## Connect to Cluster
+### Connect to Cluster
 
 ```bash
 # Login to Azure
@@ -39,12 +52,19 @@ az login
 
 # Get cluster credentials
 az aks get-credentials \
-  --resource-group RSO \
-  --name testCluster \
+  --resource-group CourtMate \
+  --name CourtMateRSO \
   --overwrite-existing
 
 # Verify connection
 kubectl get nodes
+```
+
+### Deploy All Services
+
+```bash
+# From project root directory
+./deploy-courtmate.sh
 ```
 
 ## Important

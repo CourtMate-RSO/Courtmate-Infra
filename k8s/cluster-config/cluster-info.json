@@ -1,53 +1,70 @@
 {
-  "aadProfile": null,
-  "addonProfiles": {
-    "azureKeyvaultSecretsProvider": {
-      "config": null,
-      "enabled": false,
-      "identity": null
+  "cluster": {
+    "name": "CourtMateRSO",
+    "resourceGroup": "CourtMate",
+    "location": "polandcentral",
+    "kubernetesVersion": "1.33.5",
+    "nodeCount": 2,
+    "vmSize": "Standard_DS2_v2"
+  },
+  "containerRegistry": {
+    "name": "courtmate603fc8acr",
+    "loginServer": "courtmate603fc8acr.azurecr.io",
+    "sku": "Basic",
+    "acrPullRoleAssigned": true
+  },
+  "networking": {
+    "ingressController": "nginx",
+    "loadBalancerIP": "134.112.145.160",
+    "domain": "courtmate.duckdns.org",
+    "tlsEnabled": true,
+    "certManager": "v1.13.3",
+    "letsEncryptIssuer": "letsencrypt-prod"
+  },
+  "namespaces": {
+    "production": "courtmate-prod",
+    "monitoring": "monitoring",
+    "certManager": "cert-manager"
+  },
+  "services": {
+    "booking": {
+      "image": "courtmate603fc8acr.azurecr.io/booking-service:v1.0",
+      "ingress": "https://courtmate.duckdns.org/api/bookings"
     },
-    "azurepolicy": {
-      "config": null,
-      "enabled": false,
-      "identity": null
+    "court": {
+      "image": "courtmate603fc8acr.azurecr.io/court-service:v1.0",
+      "ingress": "https://courtmate.duckdns.org/api/courts"
+    },
+    "user": {
+      "image": "courtmate603fc8acr.azurecr.io/user-service:dev",
+      "ingress": "https://courtmate.duckdns.org/api/users"
+    },
+    "notification": {
+      "image": "courtmate603fc8acr.azurecr.io/notification-service:latest",
+      "ingress": "https://courtmate.duckdns.org/api/notifications"
+    },
+    "ui": {
+      "image": "courtmate603fc8acr.azurecr.io/courtmate-ui:v1.0",
+      "ingress": "https://courtmate.duckdns.org"
     }
   },
-  "agentPoolProfiles": [
-    {
-      "availabilityZones": [
-        "1",
-        "2",
-        "3"
-      ],
-      "capacityReservationGroupId": null,
-      "count": 2,
-      "creationData": null,
-      "currentOrchestratorVersion": "1.32.7",
-      "eTag": null,
-      "enableAutoScaling": true,
-      "enableEncryptionAtHost": null,
-      "enableFips": false,
-      "enableNodePublicIp": false,
-      "enableUltraSsd": null,
-      "gatewayProfile": null,
-      "gpuInstanceProfile": null,
-      "gpuProfile": null,
-      "hostGroupId": null,
-      "kubeletConfig": null,
-      "kubeletDiskType": "OS",
-      "linuxOsConfig": null,
-      "maxCount": 5,
-      "maxPods": 110,
-      "messageOfTheDay": null,
-      "minCount": 2,
-      "mode": "System",
-      "name": "agentpool",
-      "networkProfile": null,
-      "nodeImageVersion": "AKSUbuntu-2204containerd-202510.03.0",
-      "nodeLabels": null,
-      "nodePublicIpPrefixId": null,
-      "nodeTaints": null,
-      "orchestratorVersion": "1.32.7",
+  "monitoring": {
+    "prometheus": {
+      "enabled": true,
+      "ingress": "https://prometheus.courtmate.duckdns.org"
+    },
+    "grafana": {
+      "enabled": true,
+      "ingress": "https://grafana.courtmate.duckdns.org",
+      "adminUser": "admin",
+      "adminPassword": "CourtMate2026!"
+    }
+  },
+  "deployment": {
+    "method": "Helm",
+    "chartsLocation": "./chart/",
+    "deploymentScript": "./deploy-courtmate.sh"
+  },
       "osDiskSizeGb": 128,
       "osDiskType": "Managed",
       "osSku": "Ubuntu",
