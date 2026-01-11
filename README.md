@@ -67,6 +67,70 @@ kubectl get nodes
 ./deploy-courtmate.sh
 ```
 
+This will deploy:
+- All 5 microservices (Booking, Court, User, Notification, UI)
+- Prometheus & Grafana monitoring stack
+- Configure HTTPS ingress with Let's Encrypt
+
+### Deploy Additional Components
+
+```bash
+# Autoscaling (HPA)
+kubectl apply -f Courtmate-Infra/k8s/autoscaling/
+
+# Logging (Fluentd)
+kubectl apply -f Courtmate-Infra/k8s/logging/fluentd-daemonset.yaml
+```
+
+## Infrastructure Components
+
+### Core Services (Helm)
+All services are deployed using Helm charts located in each service directory:
+- `Courtmate-Booking-Service/chart/booking-service/`
+- `Courtmate-Court-Service/chart/court-service/`
+- `Courtmate-User-Service/chart/user-service/`
+- `Courtmate-Notifications-Service/chart/notification-service/`
+- `Courtmate-ui/chart/courtmate-ui/`
+
+### Monitoring Stack (Helm)
+- **Prometheus**: Metrics collection and alerting
+- **Grafana**: Dashboards and visualization
+- Deployed via: `prometheus-community/kube-prometheus-stack`
+- Configuration: `monitoring-values.yaml`
+
+### Additional Components (kubectl)
+- **Autoscaling**: HPA configs in `k8s/autoscaling/`
+- **Logging**: Fluentd daemonset in `k8s/logging/`
+- **SSL/TLS**: cert-manager with Let's Encrypt
+
+## Directory Structure
+
+```
+Courtmate-Infra/
+├── README.md                          # This file
+├── docs/
+│   └── DEPLOYMENT.md                  # Detailed deployment guide
+├── k8s/
+│   ├── README.md                      # K8s infrastructure docs
+│   ├── autoscaling/                   # HPA configurations
+│   │   ├── booking-service-hpa.yaml
+│   │   ├── court-service-hpa.yaml
+│   │   ├── user-service-hpa.yaml
+│   │   ├── notification-service-hpa.yaml
+│   │   └── ui-service-hpa.yaml
+│   ├── logging/
+│   │   └── fluentd-daemonset.yaml    # Centralized logging
+│   ├── cluster-config/
+│   │   └── cluster-info.json         # Cluster details
+│   └── namespaces/
+│       ├── prod-namespace.yaml       # Production namespace
+│       └── monitoring-namespace.yaml # Monitoring namespace
+└── credentials/
+    └── secrets.sh                     # Secret values (not in git)
+```
+
+**Note:** Deployment manifests, services, and ingress are managed by Helm charts in each service directory.
+
 ## Important
 Never commit actual kubeconfig files with credentials!
 
