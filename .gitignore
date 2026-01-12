@@ -7,7 +7,7 @@
 k8s/secrets/*-secrets.yaml
 *-secrets.yaml
 
-k8s/cert-manager/*
+
 # Secrets
 *secret*.yaml
 *-secrets.yaml
